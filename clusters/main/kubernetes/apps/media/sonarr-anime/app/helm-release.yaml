@@ -61,4 +61,4 @@ spec:
             type: nfs
             mountPath: /config/Backups
             server: ${NAS_IP}
-            path: /mnt/tank/backups/sonarr-anime
+            path: /mnt/tank/backups/applications/sonarr-anime
