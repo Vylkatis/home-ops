@@ -51,13 +51,13 @@ spec:
     
     persistence:
         media:
-            enable: true
+            enabled: true
             type: nfs
             mountPath: /media
             server: ${NAS_IP}
             path: /mnt/tank/media
         backup:
-            enable: true
+            enabled: true
             type: nfs
             mountPath: /config/Backups
             server: ${NAS_IP}
