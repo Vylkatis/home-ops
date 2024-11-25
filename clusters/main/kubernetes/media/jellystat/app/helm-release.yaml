@@ -1,0 +1,58 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: jellystat
+  namespace: jellystat
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: jellystat
+      version: 4.0.8
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+      interval: 15m
+  timeout: 20m
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    TZ: ${TIMEZONE}
+    
+    ingress:
+      main:
+        enabled: true
+        integrations:
+          traefik:
+            enabled: true
+            middlewares:
+              - name: local
+                namespace: traefik
+          certManager:
+            enabled: true
+            certificateIssuer: domain-0-le-prod
+        hosts:
+          - host: jellystat.${DOMAIN_0}
+            paths:
+              - path: /
+                pathType: Prefix
+    
+    persistence:
+        backup:
+            enabled: true
+            type: nfs
+            mountPath: /app/backend/backup-data
+            server: ${NAS_IP}
+            path: /mnt/tank/backups/applications/jellystat
