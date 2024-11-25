@@ -76,20 +76,20 @@ spec:
     persistence:
       data:
         volsync:
-          - name: config
+          - name: r2
             type: restic
             credentials: s3
             dest:
               enabled: true
             src:
-              enabled: true
+              enabled: false
 
-    cnpg:
-      main:
-        mode: recovery
-        backups:
-          enabled: true
-          credentials: s3
-        recovery:
-          method: object_store
-          credentials: s3
+    #cnpg:
+    #  main:
+    #    mode: recovery
+    #    backups:
+    #      enabled: true
+    #      credentials: s3
+    #    recovery:
+    #      method: object_store
+    #      credentials: s3
