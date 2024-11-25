@@ -89,7 +89,6 @@ spec:
         mode: recovery
         backups:
           enabled: true
-          revision: 1
           credentials: s3
         recovery:
           method: object_store
