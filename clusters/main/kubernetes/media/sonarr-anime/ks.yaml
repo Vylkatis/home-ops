@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 10m
-  path: clusters/main/kubernetes/apps/media/sonarr-anime/app
+  path: clusters/main/kubernetes/media/sonarr-anime/app
   prune: true
   sourceRef:
     kind: GitRepository
