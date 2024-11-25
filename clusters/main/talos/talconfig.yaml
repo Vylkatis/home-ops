@@ -56,6 +56,9 @@ controlPlane:
                     - siderolabs/util-linux-tools
                     - siderolabs/iscsi-tools
                     - siderolabs/qemu-guest-agent
+                    - siderolabs/i915-ucode
+                    - siderolabs/intel-ucode
+                    - siderolabs/mei
     machineFiles:
     - content: |
         [plugins."io.containerd.grpc.v1.cri"]
@@ -95,6 +98,9 @@ worker:
                     - siderolabs/util-linux-tools
                     - siderolabs/iscsi-tools
                     - siderolabs/qemu-guest-agent
+                    - siderolabs/i915-ucode
+                    - siderolabs/intel-ucode
+                    - siderolabs/mei
     machineFiles:
     - content: |
         [plugins."io.containerd.grpc.v1.cri"]

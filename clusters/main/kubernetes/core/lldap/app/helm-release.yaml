@@ -3,14 +3,14 @@
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
-  name: jellyfin
-  namespace: jellyfin
+  name: lldap
+  namespace: lldap
 spec:
   interval: 15m
   chart:
     spec:
-      chart: jellyfin
-      version: 20.3.5
+      chart: lldap
+      version: 7.3.2
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -29,7 +29,6 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    TZ: ${TIMEZONE}
 
     credentials:
       s3:
@@ -40,6 +39,25 @@ spec:
         secretKey: ${S3_secretKey}
         encrKey: ${S3_encrKey}
 
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                LLDAP_LDAP_BASE_DN: "${LDAP_BASE_DN}"
+                LLDAP_LDAP_USER_DN: admin
+                LLDAP_LDAP_USER_EMAIL: ${SERV_EMAIL}
+                LLDAP_LDAP_USER_PASS: ${ADMIN_PASSWORD}
+                LLDAP_SMTP_OPTIONS__ENABLE_PASSWORD_RESET: true
+                LLDAP_SMTP_OPTIONS__SERVER: smtp.gmail.com
+                LLDAP_SMTP_OPTIONS__PORT: 587
+                LLDAP_SMTP_OPTIONS__SMTP_ENCRYPTION: "STARTTLS"
+                LLDAP_SMTP_OPTIONS__USER: ${SERV_EMAIL}
+                LLDAP_SMTP_OPTIONS__PASSWORD: ${LLDAP_EMAIL_PASSWORD}
+                LLDAP_SMTP_OPTIONS__FROM: "LLDAP Admin <no-reply@${DOMAIN_0}>"
+                LLDAP_SMTP_OPTIONS__REPLY_TO: "Do not reply <no-reply@${DOMAIN_0}>"
+
     ingress:
       main:
         enabled: true
@@ -48,15 +66,15 @@ spec:
             enabled: true
           certManager:
             enabled: true
-            certificateIssuer: domain-1-le-prod
+            certificateIssuer: domain-0-le-prod
         hosts:
-          - host: jellyfin.${DOMAIN_1}
+          - host: lldap.${DOMAIN_0}
             paths:
               - path: /
                 pathType: Prefix
-    
+
     persistence:
-      config:
+      data:
         volsync:
           - name: config
             type: restic
@@ -65,18 +83,14 @@ spec:
               enabled: true
             src:
               enabled: true
-      media:
-        enabled: true
-        type: nfs
-        mountPath: /media
-        server: ${NAS_IP}
-        path: /mnt/tank/media
-    
-    workload:
+
+    cnpg:
       main:
-        podSpec:      
-          containers:
-            main:
-              resources:
-                limits:
-                  gpu.intel.com/i915: 1
+        mode: recovery
+        backups:
+          enabled: true
+          revision: 1
+          credentials: s3
+        recovery:
+          method: object_store
+          credentials: s3
