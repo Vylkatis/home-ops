@@ -42,11 +42,11 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: domain-0-le-prod
-          hosts:
-            - host: agh.${DOMAIN_0}
-              paths:
-                - path: /
-                  pathType: Prefix
+        hosts:
+          - host: agh.${DOMAIN_0}
+            paths:
+              - path: /
+                pathType: Prefix
     
     service:
       main:
