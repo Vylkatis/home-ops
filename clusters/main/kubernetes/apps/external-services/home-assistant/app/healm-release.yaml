@@ -39,11 +39,11 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: domain-1-le-prod
-          hosts:
-            - host: haos.${DOMAIN_1}
-              paths:
-                - path: /
-                  pathType: Prefix
+        hosts:
+          - host: haos.${DOMAIN_1}
+            paths:
+              - path: /
+                pathType: Prefix
     
     service:
       main:
