@@ -1,0 +1,77 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: lldap
+  namespace: lldap
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: lldap
+      version: 7.3.2
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+      interval: 15m
+  timeout: 20m
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+
+    credentials:
+      s3:
+        type: s3
+        url: ${S3_URL}
+        bucket: ${S3_BUCKET}
+        accessKey: ${S3_accessKey}
+        secretKey: ${S3_secretKey}
+        encrKey: ${S3_encrKey}
+
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                LLDAP_LDAP_BASE_DN: "${LDAP_BASE_DN}"
+                LLDAP_LDAP_USER_DN: admin
+                LLDAP_LDAP_USER_EMAIL: ${SERV_EMAIL}
+                LLDAP_LDAP_USER_PASS: ${ADMIN_PASSWORD}
+                LLDAP_SMTP_OPTIONS__ENABLE_PASSWORD_RESET: true
+                LLDAP_SMTP_OPTIONS__SERVER: smtp.gmail.com
+                LLDAP_SMTP_OPTIONS__PORT: 587
+                LLDAP_SMTP_OPTIONS__SMTP_ENCRYPTION: "STARTTLS"
+                LLDAP_SMTP_OPTIONS__USER: ${SERV_EMAIL}
+                LLDAP_SMTP_OPTIONS__PASSWORD: ${LLDAP_EMAIL_PASSWORD}
+                LLDAP_SMTP_OPTIONS__FROM: "LLDAP Admin <no-reply@${DOMAIN_0}>"
+                LLDAP_SMTP_OPTIONS__REPLY_TO: "Do not reply <no-reply@${DOMAIN_0}>"
+
+    ingress:
+      main:
+        enabled: true
+        integrations:
+          traefik:
+            enabled: true
+            middlewares:
+              - name: local
+                namespace: traefik
+          certManager:
+            enabled: true
+            certificateIssuer: domain-0-le-prod
+        hosts:
+          - host: lldap.${DOMAIN_0}
+            paths:
+              - path: /
+                pathType: Prefix

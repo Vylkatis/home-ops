@@ -4,3 +4,6 @@ resources:
   - jellyfin/ks.yaml
   - sonarr/ks.yaml
   - sonarr-anime/ks.yaml
+  - bazarr/ks.yaml
+  - jellystat/ks.yaml
+  - radarr/ks.yaml
