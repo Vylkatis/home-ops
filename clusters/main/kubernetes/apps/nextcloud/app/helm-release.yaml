@@ -1,0 +1,109 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: nextcloud
+  namespace: nextcloud
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: nextcloud
+      version: 32.2.11
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+      interval: 15m
+  timeout: 20m
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    TZ: ${TIMEZONE}
+
+    credentials:
+      s3:
+        type: s3
+        url: ${S3_URL}
+        bucket: ${S3_BUCKET}
+        accessKey: ${S3_accessKey}
+        secretKey: ${S3_secretKey}
+        encrKey: ${S3_encrKey}
+
+    ingress:
+      main:
+        enabled: true
+        integrations:
+          traefik:
+            enabled: true
+          certManager:
+            enabled: true
+            certificateIssuer: domain-1-le-prod
+        hosts:
+          - host: cloud.${DOMAIN_1}
+
+    nextcloud:
+      general:
+        default_phone_region: FR
+        accessIP: ${TRAEFIK_IP}
+      previews:
+        providers:
+          - BMP
+          - GIF
+          - JPEG
+          - Krita
+          - MarkDown
+          - MP3
+          - OpenDocument
+          - PNG
+          - TXT
+          - XBitmap
+      clamav:
+        enabled: true
+      collabora:
+        enabled: true
+        password: ${ADMIN_PASSWORD}
+        dictionaries:
+          - en_GB
+          - en_US
+          - es_ES
+          - fr_FR
+    
+    persistence:
+      config:
+        volsync:
+          - name: r2
+            type: restic
+            credentials: s3
+            dest:
+              enabled: true
+            src:
+              enabled: false
+      html:
+        volsync:
+          - name: r2
+            type: restic
+            credentials: s3
+            dest:
+              enabled: true
+            src:
+              enabled: false
+      data:
+        type: nfs
+        server: ${NAS_IP}
+        path: /mnt/tank/ncdata
+  
+    cnpg:
+      main:
+        backups:
+          enabled: true
+          credentials: s3
