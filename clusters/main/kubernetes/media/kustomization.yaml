@@ -9,3 +9,5 @@ resources:
   - radarr/ks.yaml
   - flaresolverr/ks.yaml
   - prowlarr/ks.yaml
+  - jellyseerr/ks.yaml
+  - qbittorrent/ks.yaml
