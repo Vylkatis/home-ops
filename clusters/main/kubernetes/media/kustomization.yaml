@@ -8,6 +8,4 @@ resources:
   - jellystat/ks.yaml
   - radarr/ks.yaml
   - flaresolverr/ks.yaml
-  - jellyseerr/ks.yaml
   - prowlarr/ks.yaml
-  - qbittorrent/ks.yaml
