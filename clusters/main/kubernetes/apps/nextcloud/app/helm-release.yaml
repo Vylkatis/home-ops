@@ -50,6 +50,9 @@ spec:
             certificateIssuer: domain-1-le-prod
         hosts:
           - host: cloud.${DOMAIN_1}
+            paths:
+              - path: /
+                pathType: Prefix
 
     nextcloud:
       general:
