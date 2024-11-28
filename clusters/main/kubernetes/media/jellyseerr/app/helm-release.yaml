@@ -54,14 +54,3 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
-    
-    persistence:
-      config:
-        volsync:
-          - name: r2
-            type: restic
-            credentials: s3
-            dest:
-              enabled: true
-            src:
-              enabled: false
