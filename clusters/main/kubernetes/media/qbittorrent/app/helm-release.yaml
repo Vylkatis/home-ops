@@ -73,9 +73,9 @@ spec:
       vuetorrent:
         enabled: true
         type: nfs
-        mountPath: /vuetorrent
+        mountPath: /config/vuetorrent
         server: ${NAS_IP}
-        path: /mnt/tank/apps-storage/VueTorrent/public
+        path: /mnt/tank/apps-storage/VueTorrent
       media:
         enabled: true
         type: nfs
@@ -112,3 +112,12 @@ spec:
             protocol: "http"
             targetPort: 8888
         type: "ClusterIP"
+    
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                QBT_Preferences__WebUI__RootFolder: '/config/vuetorrent'
+                QBT_Preferences__WebUI__AlternativeUIEnabled: true
