@@ -70,6 +70,12 @@ spec:
                 pathType: Prefix
 
     persistence:
+      vuetorrent:
+        enabled: true
+        type: nfs
+        mountPath: /vuetorrent
+        server: ${NAS_IP}
+        path: /mnt/tank/apps-storage/VueTorrent
       media:
         enabled: true
         type: nfs
