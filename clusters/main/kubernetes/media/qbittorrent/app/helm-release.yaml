@@ -79,7 +79,7 @@ spec:
       media:
         enabled: true
         type: nfs
-        mountPath: /downloads
+        mountPath: /media/downloads/torrent
         server: ${NAS_IP}
         path: /mnt/tank/media/downloads/torrent
 
