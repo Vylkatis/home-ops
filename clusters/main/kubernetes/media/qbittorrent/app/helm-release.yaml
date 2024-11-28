@@ -89,9 +89,6 @@ spec:
         service:
             type: "LoadBalancer"
             loadBalancerIP: "192.168.1.149"
-            ports:
-                codeserver:
-                  port: 80
       vpn:
         type: gluetun
         killSwitch: true
