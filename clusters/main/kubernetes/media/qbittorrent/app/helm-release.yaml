@@ -84,6 +84,14 @@ spec:
         path: /mnt/tank/media/downloads/torrent
 
     addons:
+      codeserver:
+        enabled: true
+        service:
+            type: "LoadBalancer"
+            loadBalancerIP: "192.168.1.149"
+            ports:
+                codeserver:
+                  port: 80
       vpn:
         type: gluetun
         killSwitch: true
@@ -112,12 +120,3 @@ spec:
             protocol: "http"
             targetPort: 8888
         type: "ClusterIP"
-    
-    workload:
-      main:
-        podSpec:
-          containers:
-            main:
-              env:
-                QBT_Preferences__WebUI__RootFolder: '/config/vuetorrent'
-                QBT_Preferences__WebUI__AlternativeUIEnabled: true
