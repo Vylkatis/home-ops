@@ -57,3 +57,11 @@ spec:
             paths:
               - path: /
                 pathType: Prefix
+    
+    persistence:
+        backup:
+            enabled: true
+            type: nfs
+            mountPath: /config/Backups
+            server: ${NAS_IP}
+            path: /mnt/tank/backups/applications/prowlarr
