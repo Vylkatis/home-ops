@@ -50,6 +50,12 @@ spec:
                 pathType: Prefix
 
     persistence:
+        media:
+            enabled: true
+            type: nfs
+            mountPath: /media
+            server: ${NAS_IP}
+            path: /mnt/tank/media
         backup:
             enabled: true
             type: nfs
