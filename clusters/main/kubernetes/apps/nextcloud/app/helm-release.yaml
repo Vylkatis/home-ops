@@ -28,6 +28,9 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    global:
+      stopAll: true
+      
     TZ: ${TIMEZONE}
 
     credentials:
@@ -90,7 +93,7 @@ spec:
             dest:
               enabled: true
             src:
-              enabled: false
+              enabled: true
       html:
         volsync:
           - name: r2
@@ -99,7 +102,7 @@ spec:
             dest:
               enabled: true
             src:
-              enabled: false
+              enabled: true
       data:
         type: nfs
         server: ${NAS_IP}
