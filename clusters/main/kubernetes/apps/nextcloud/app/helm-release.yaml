@@ -29,7 +29,7 @@ spec:
     keepHistory: false
   values:
     global:
-      stopAll: true
+      stopAll: false
       
     TZ: ${TIMEZONE}
 
@@ -110,6 +110,11 @@ spec:
   
     cnpg:
       main:
+        mode: recovery
         backups:
-          enabled: true
-          credentials: s3
+           enabled: true
+            revision: "2"
+            credentials: r2
+        recovery:
+          revision: "1"          ## Can be added when you are would like to recover when the revision is > 0 (Step 3)
+          credentials: r2
