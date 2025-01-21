@@ -111,5 +111,3 @@ spec:
         backups:
           enabled: true
           credentials: s3
-        recovery:
-          credentials: s3
