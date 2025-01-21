@@ -66,13 +66,11 @@ spec:
           - BMP
           - GIF
           - JPEG
-          - Krita
           - MarkDown
           - MP3
           - OpenDocument
           - PNG
           - TXT
-          - XBitmap
       clamav:
         enabled: true
       collabora:
