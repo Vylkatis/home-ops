@@ -85,7 +85,7 @@ spec:
             dest:
               enabled: true
             src:
-              enabled: false
+              enabled: true
     cnpg:
       main:
         backups:
