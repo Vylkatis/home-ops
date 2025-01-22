@@ -40,8 +40,7 @@ spec:
         bucket: ${S3_BUCKET}
         accessKey: ${S3_accessKey}
         secretKey: ${S3_secretKey}
-        encrKey: ${S3_encrKey}
-
+        encrKey: ${S3_secretKey}
     ingress:
       main:
         enabled: true
@@ -89,18 +88,18 @@ spec:
             type: restic
             credentials: s3
             dest:
-              enabled: true
-            src:
               enabled: false
+            src:
+              enabled: true
       html:
         volsync:
           - name: r2
             type: restic
             credentials: s3
             dest:
-              enabled: true
-            src:
               enabled: false
+            src:
+              enabled: true
       data:
         type: nfs
         server: ${NAS_IP}
