@@ -40,7 +40,7 @@ spec:
         bucket: ${S3_BUCKET}
         accessKey: ${S3_accessKey}
         secretKey: ${S3_secretKey}
-        encrKey: ${S3_secretKey}
+        encrKey: ${S3_encrKey}
     ingress:
       main:
         enabled: true
