@@ -1,8 +1,8 @@
 clusterName: ${CLUSTERNAME}
 # renovate: datasource=docker depName=ghcr.io/siderolabs/installer
-talosVersion: v1.9.1
+talosVersion: v1.9.3
 # renovate: datasource=docker depName=ghcr.io/siderolabs/kubelet
-kubernetesVersion: v1.32.0
+kubernetesVersion: v1.32.1
 endpoint: https://${VIP}:6443
 allowSchedulingOnControlPlanes: true
 additionalMachineCertSans:
@@ -56,7 +56,7 @@ controlPlane:
                     - siderolabs/util-linux-tools
                     - siderolabs/iscsi-tools
                     - siderolabs/qemu-guest-agent
-                    - siderolabs/i915-ucode
+                    - siderolabs/i915
                     - siderolabs/intel-ucode
                     - siderolabs/mei
     machineFiles:
@@ -98,7 +98,7 @@ worker:
                     - siderolabs/util-linux-tools
                     - siderolabs/iscsi-tools
                     - siderolabs/qemu-guest-agent
-                    - siderolabs/i915-ucode
+                    - siderolabs/i915
                     - siderolabs/intel-ucode
                     - siderolabs/mei
     machineFiles:

@@ -29,8 +29,6 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    global:
-      stopAll: true
     
     TZ: ${TIMEZONE}
 
