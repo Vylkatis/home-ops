@@ -39,6 +39,11 @@ spec:
         secretKey: ${S3_secretKey}
         encrKey: ${S3_secretKey}
 
+    service:
+      main:
+        type: LoadBalancer
+        loadBalancerIP: 192.168.1.55
+
     workload:
       main:
         podSpec:
