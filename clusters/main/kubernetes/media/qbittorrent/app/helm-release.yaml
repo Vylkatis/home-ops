@@ -103,9 +103,6 @@ spec:
           SERVER_COUNTRIES: ${SERVER_COUNTRIES}
 
     service:
-      main:
-        type: LoadBalancer
-        loadBalancerIP: 192.168.1.56
       proxy:
         enabled: true
         ports:

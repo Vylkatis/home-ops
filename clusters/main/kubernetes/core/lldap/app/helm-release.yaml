@@ -37,7 +37,7 @@ spec:
         bucket: ${S3_BUCKET}
         accessKey: ${S3_accessKey}
         secretKey: ${S3_secretKey}
-        encrKey: ${S3_secretKey}
+        encrKey: ${S3_encrKey}
 
     workload:
       main:
@@ -85,7 +85,7 @@ spec:
             cleanupCachePVC: true
             credentials: s3
             dest:
-              enabled: true
+              enabled: false
             src:
               enabled: true
               trigger:
@@ -96,18 +96,5 @@ spec:
           enabled: true
           credentials: s3
 
-    service:
-      main:
-        type: LoadBalancer
-        loadBalancerIP: 192.168.1.55
-        ports:
-          main:
-            port: 17170
-      ldap:
-        enabled: true
-        ports:
-          ldap:
-            enabled: true
-            port: 3890
       
 
