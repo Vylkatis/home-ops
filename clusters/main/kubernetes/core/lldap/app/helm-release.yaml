@@ -81,8 +81,6 @@ spec:
         volsync:
           - name: r2
             type: restic
-            cleanupTempPVC: true
-            cleanupCachePVC: true
             credentials: s3
             dest:
               enabled: false
