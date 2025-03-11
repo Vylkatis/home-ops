@@ -4,4 +4,4 @@ resources:
   - kubernetes-dashboard/ks.yaml
   - external-services
   - nextcloud/ks.yaml
-  #- teamspeak/ks.yaml
+  - teamspeak/ks.yaml
