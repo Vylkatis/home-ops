@@ -42,17 +42,7 @@ spec:
         secretKey: ${S3_secretKey}
         encrKey: ${S3_encrKey}
 
-    ingress:
+    service:
       main:
-        enabled: true
-        integrations:
-          traefik:
-            enabled: true
-          certManager:
-            enabled: true
-            certificateIssuer: domain-1-le-prod
-        hosts:
-          - host: ts3.${DOMAIN_1}
-            paths:
-              - path: /
-                pathType: Prefix
+        type: LoadBalancer
+        loadBalancerIP: 192.168.1.55
