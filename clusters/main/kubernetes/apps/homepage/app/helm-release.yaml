@@ -52,17 +52,10 @@ spec:
     addons:
       codeserver:
         enabled: true
-      service:
-        enabled: true
-        ports:
-          codeserver:
-            enabled: true
-            port: 12345
-            targetPort: 12345
-      ingress:
-        enabled: true
-        hosts:
-          - host: code.home.${DOMAIN_0}
-            paths:
-              - path: /
-                pathType: Prefix
+        ingress:
+          enabled: true
+          hosts:
+            - host: code.home.${DOMAIN_0}
+              paths:
+                - path: /
+                  pathType: Prefix
