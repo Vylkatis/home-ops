@@ -5,3 +5,4 @@ resources:
   - external-services
   - nextcloud/ks.yaml
   - teamspeak/ks.yaml
+  - homepage/ks.yaml
