@@ -12,3 +12,4 @@ resources:
   - qbittorrent/ks.yaml
   - jellyseerr/ks.yaml
   - notifiarr/ks.yaml
+  - unpackerr/ks.yaml
