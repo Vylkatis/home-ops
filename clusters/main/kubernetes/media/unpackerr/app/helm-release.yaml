@@ -32,12 +32,12 @@ spec:
     TZ: ${TIMEZONE}
 
     persistence:
-      downloads:
+      media:
         enabled: true
         type: nfs
-        mountPath: /downloads
+        mountPath: /media
         server: ${NAS_IP}
-        path: /mnt/tank/media/downloads/torrent/complete
+        path: /mnt/tank/media
 
     workload:
       main:
