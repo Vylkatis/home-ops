@@ -66,6 +66,13 @@ spec:
         ServerPassword: "${PALWORLD_PASSWORD}"
         AdminPassword: "${ADMIN_PASSWORD}"
       update_public_ip: true
+    
+    workload:
+      main:
+        podSpec:
+          initContainers:
+            update-config-ini:
+              enabled: false
 
     addons:
       codeserver:
