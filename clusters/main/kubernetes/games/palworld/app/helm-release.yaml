@@ -31,6 +31,34 @@ spec:
   values:
     TZ: ${TIMEZONE}
 
+    service:
+      main:
+        enabled: true
+        type: LoadBalancer
+        loadBalancerIP: 192.168.1.60
+        ports:
+          main:
+            protocol: udp
+            port: 8211
+      api:
+        enabled: true
+        type: LoadBalancer
+        loadBalancerIP: 192.168.1.60
+        ports:
+          api:
+            enabled: true
+            protocol: tcp
+            port: 8212
+      rcon:
+        enabled: true
+        type: LoadBalancer
+        loadBalancerIP: 192.168.1.60
+        ports:
+          rcon:
+            enabled: true
+            protocol: tcp
+            port: 25575
+
     palworld:
       games:
         ServerName: "Palworld with the boys"
