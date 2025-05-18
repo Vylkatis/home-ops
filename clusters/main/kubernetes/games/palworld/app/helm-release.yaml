@@ -31,6 +31,9 @@ spec:
   values:
     TZ: ${TIMEZONE}
 
+    global:
+      stopAll: true
+
     service:
       main:
         enabled: true
