@@ -43,18 +43,11 @@ spec:
     ingress:
       main:
         enabled: true
+        ingressClassName: external
         integrations:
-          traefik:
-            enabled: true
-            middlewares:
-              - name: local
-                namespace: traefik
           certManager:
             enabled: true
             certificateIssuer: domain-0-le-prod
         hosts:
           - host: flaresolverr.${DOMAIN_0}
-            paths:
-              - path: /
-                pathType: Prefix
     

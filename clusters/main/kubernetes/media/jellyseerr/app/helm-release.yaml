@@ -43,15 +43,11 @@ spec:
     ingress:
       main:
         enabled: true
+        ingressClassName: external
         integrations:
-          traefik:
-            enabled: true
           certManager:
             enabled: true
             certificateIssuer: domain-1-le-prod
         hosts:
           - host: jellyseerr.${DOMAIN_1}
-            paths:
-              - path: /
-                pathType: Prefix
             
