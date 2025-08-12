@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: nextcloud
-      version: 32.10.7
+      version: 36.5.1
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -41,12 +41,12 @@ spec:
         accessKey: ${S3_accessKey}
         secretKey: ${S3_secretKey}
         encrKey: ${S3_encrKey}
+    
     ingress:
       main:
         enabled: true
+        ingressClassName: external
         integrations:
-          traefik:
-            enabled: true
           certManager:
             enabled: true
             certificateIssuer: domain-1-le-prod
