@@ -5,8 +5,8 @@ resources:
   - core
   - flux-entry.yaml
   - flux-system
+  - games
   - kube-system
   - media
-  - system
-  - games
   - networking
+  - system
