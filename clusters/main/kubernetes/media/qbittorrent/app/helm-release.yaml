@@ -16,17 +16,6 @@ spec:
         name: truecharts
         namespace: flux-system
       interval: 15m
-  postRenderers:
-  - kustomize:
-      patches:
-        - target:
-            version: v1
-            kind: Deployment
-            name: qbittorrent
-          patch: |
-            - op: add
-              path: /spec/template/spec/containers/1/resources/limits/truecharts.org~1tun
-              value: 1
   timeout: 20m
   maxHistory: 3
   install:
@@ -77,23 +66,25 @@ spec:
         path: /mnt/tank/media/downloads/torrent
 
     addons:
-      vpn:
-        type: gluetun
-        killSwitch: true
-        excludedNetworks_IPv4:
-          - "${LOCALNET}"
-        excludedNetworks_IPv6: []
-        env:
-          VPN_SERVICE_PROVIDER: airvpn
-          VPN_TYPE: wireguard
-          HTTPPROXY: "on"
-          HTTPPROXY_LOG: "on"
-          FIREWALL_INPUT_PORTS: 10095,8888
-          FIREWALL_VPN_INPUT_PORTS: ${VPN_PORTS}
-          WIREGUARD_PRIVATE_KEY: ${WIREGUARD_PRIVATE_KEY}
-          WIREGUARD_PRESHARED_KEY: ${WIREGUARD_PRESHARED_KEY}
-          WIREGUARD_ADDRESSES: ${WIREGUARD_ADDRESSES}
-          SERVER_COUNTRIES: ${SERVER_COUNTRIES}
+      gluetun:
+        enabled: true
+        container:
+          resources:
+            limits:
+              truecharts.org/tun: 1
+          env:
+            FIREWALL: "on"
+            FIREWALL_OUTBOUND_SUBNETS: "${LOCALNET}"
+            VPN_SERVICE_PROVIDER: airvpn
+            VPN_TYPE: wireguard
+            HTTPPROXY: "on"
+            HTTPPROXY_LOG: "on"
+            FIREWALL_INPUT_PORTS: 10095,8888
+            FIREWALL_VPN_INPUT_PORTS: ${VPN_PORTS}
+            WIREGUARD_PRIVATE_KEY: ${WIREGUARD_PRIVATE_KEY}
+            WIREGUARD_PRESHARED_KEY: ${WIREGUARD_PRESHARED_KEY}
+            WIREGUARD_ADDRESSES: ${WIREGUARD_ADDRESSES}
+            SERVER_COUNTRIES: ${SERVER_COUNTRIES}
 
     service:
       proxy:
