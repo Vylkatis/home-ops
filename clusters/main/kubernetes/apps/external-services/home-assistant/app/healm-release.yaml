@@ -39,7 +39,7 @@ spec:
             enabled: true
             certificateIssuer: domain-1-le-prod
         hosts:
-          - host: ha.${DOMAIN_1}
+          - host: hass.${DOMAIN_1}
     
     service:
       main:
