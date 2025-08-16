@@ -71,7 +71,7 @@ spec:
           - PNG
           - TXT
       clamav:
-        enabled: false
+        enabled: true
       collabora:
         enabled: true
         password: ${ADMIN_PASSWORD}
