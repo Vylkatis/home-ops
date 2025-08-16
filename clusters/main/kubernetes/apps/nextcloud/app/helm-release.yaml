@@ -59,7 +59,7 @@ spec:
     nextcloud:
       general:
         default_phone_region: FR
-        accessIP: ${TRAEFIK_IP}
+        accessIP: ${NGINX_EXTERNAL_IP}
       previews:
         providers:
           - BMP
@@ -71,7 +71,7 @@ spec:
           - PNG
           - TXT
       clamav:
-        enabled: true
+        enabled: false
       collabora:
         enabled: true
         password: ${ADMIN_PASSWORD}
