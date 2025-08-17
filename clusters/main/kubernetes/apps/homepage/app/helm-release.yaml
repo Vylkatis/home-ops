@@ -34,11 +34,23 @@ spec:
       
     TZ: ${TIMEZONE}
 
+    workload:
+      main:
+        podSpec:
+          automountServiceAccountToken: true
+          containers:
+            main:
+              env:
+                HOMEPAGE_ALLOWED_HOSTS: "home.${DOMAIN_0}"
+
     ingress:
       main:
         enabled: true
         ingressClassName: internal
         integrations:
+          homepage:
+            enabled: true
+            group: Media Server
           certManager:
             enabled: true
             certificateIssuer: domain-0-le-prod
