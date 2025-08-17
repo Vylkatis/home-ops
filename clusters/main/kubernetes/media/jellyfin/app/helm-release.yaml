@@ -45,6 +45,9 @@ spec:
         enabled: true
         ingressClassName: external
         integrations:
+          homepage:
+            enabled: true
+            group: Media Server
           certManager:
             enabled: true
             certificateIssuer: domain-1-le-prod
