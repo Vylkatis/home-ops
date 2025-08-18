@@ -48,6 +48,9 @@ spec:
           homepage:
             enabled: true
             group: Media Server
+            widget:
+              custom:
+                key: ${JELLYFIN_KEY}
           certManager:
             enabled: true
             certificateIssuer: domain-1-le-prod
