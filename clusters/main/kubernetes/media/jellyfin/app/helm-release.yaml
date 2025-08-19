@@ -78,11 +78,8 @@ spec:
         server: ${NAS_IP}
         path: /mnt/tank/media
     
-    workload:
-      main:
-        podSpec:      
-          containers:
-            main:
-              resources:
-                limits:
-                  gpu.intel.com/i915: 1
+    resources:
+      limits:
+        cpu: 2000m
+        memory: 3Gi
+        gpu.intel.com/i915: 1

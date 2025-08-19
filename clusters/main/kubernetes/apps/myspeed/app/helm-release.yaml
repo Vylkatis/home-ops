@@ -65,3 +65,7 @@ spec:
               enabled: true
             src:
               enabled: true
+
+    resources:
+      limits:
+        cpu: 4000m
