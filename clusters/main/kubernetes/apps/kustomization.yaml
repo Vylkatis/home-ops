@@ -6,3 +6,4 @@ resources:
   - kubernetes-dashboard/ks.yaml
   - nextcloud/ks.yaml
   - teamspeak/ks.yaml
+  - myspeed/ks.yaml
