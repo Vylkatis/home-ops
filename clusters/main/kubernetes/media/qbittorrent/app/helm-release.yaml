@@ -65,6 +65,10 @@ spec:
         server: ${NAS_IP}
         path: /mnt/tank/media/downloads/torrent
 
+    workload:
+      qbitportforward:
+        enabled: false
+
     addons:
       gluetun:
         enabled: true
