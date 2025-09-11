@@ -30,7 +30,7 @@ spec:
   values:
     global:
       stopAll: false
-      
+
     TZ: ${TIMEZONE}
 
     credentials:
@@ -41,7 +41,7 @@ spec:
         accessKey: ${S3_accessKey}
         secretKey: ${S3_secretKey}
         encrKey: ${S3_encrKey}
-    
+
     ingress:
       main:
         enabled: true
@@ -80,7 +80,7 @@ spec:
           - en_US
           - es_ES
           - fr_FR
-    
+
     persistence:
       config:
         volsync:
@@ -104,7 +104,7 @@ spec:
         type: nfs
         server: ${NAS_IP}
         path: /mnt/tank/ncdata
-  
+
     cnpg:
       main:
         backups:

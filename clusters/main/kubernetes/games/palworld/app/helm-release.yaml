@@ -69,7 +69,7 @@ spec:
         ServerPassword: "${PALWORLD_PASSWORD}"
         AdminPassword: "${ADMIN_PASSWORD}"
       update_public_ip: true
-    
+
     workload:
       main:
         podSpec:
@@ -89,7 +89,7 @@ spec:
               certificateIssuer: domain-0-le-prod
           hosts:
             - host: code.palworld.${DOMAIN_0}
-    
+
     resources:
       limits:
         memory: 12Gi

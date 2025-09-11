@@ -54,7 +54,7 @@ spec:
             certificateIssuer: domain-0-le-prod
         hosts:
           - host: myspeed.${DOMAIN_0}
-    
+
     persistence:
       data:
         volsync:

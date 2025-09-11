@@ -50,4 +50,3 @@ spec:
             certificateIssuer: domain-1-le-prod
         hosts:
           - host: jellyseerr.${DOMAIN_1}
-            

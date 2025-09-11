@@ -40,7 +40,7 @@ spec:
             certificateIssuer: domain-0-le-prod
         hosts:
           - host: agh.${DOMAIN_0}
-    
+
     service:
       main:
         type: ExternalIP

@@ -40,7 +40,7 @@ spec:
             certificateIssuer: domain-1-le-prod
         hosts:
           - host: hass.${DOMAIN_1}
-    
+
     service:
       main:
         type: ExternalIP

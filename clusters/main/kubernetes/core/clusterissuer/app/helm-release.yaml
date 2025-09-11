@@ -36,7 +36,7 @@ spec:
         name: "selfsigned"
       ## Remove these if you do NOT want to use clusterissuer
       ACME:
-        
+
         ## DOMAIN_0
         - name: domain-0-le-staging
           # Used for both logging in to the DNS provider AND ACME registration
@@ -54,7 +54,7 @@ spec:
           type: "cloudflare"
           # for cloudflare
           cfapitoken: "${DOMAIN_0_CLOUDFLARE_TOKEN}"
-        
+
         ## DOMAIN_1
         - name: domain-1-le-staging
           # Used for both logging in to the DNS provider AND ACME registration

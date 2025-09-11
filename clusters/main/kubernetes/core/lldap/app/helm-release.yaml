@@ -68,7 +68,7 @@ spec:
             certificateIssuer: domain-0-le-prod
         hosts:
           - host: lldap.${DOMAIN_0}
-    
+
     persistence:
       data:
         volsync:
@@ -86,6 +86,3 @@ spec:
         backups:
           enabled: true
           credentials: s3
-
-      
-

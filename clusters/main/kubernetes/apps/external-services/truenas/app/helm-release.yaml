@@ -42,7 +42,7 @@ spec:
             certificateIssuer: domain-0-le-prod
         hosts:
           - host: truenas.${DOMAIN_0}
-    
+
     service:
       main:
         type: ExternalIP
@@ -53,5 +53,3 @@ spec:
             enabled: true
             port: 443
             protocol: https
-
-        

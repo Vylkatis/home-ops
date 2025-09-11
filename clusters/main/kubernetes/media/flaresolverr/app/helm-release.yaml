@@ -50,4 +50,3 @@ spec:
             certificateIssuer: domain-0-le-prod
         hosts:
           - host: flaresolverr.${DOMAIN_0}
-    

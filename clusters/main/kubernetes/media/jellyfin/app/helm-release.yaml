@@ -58,7 +58,7 @@ spec:
             certificateIssuer: domain-1-le-prod
         hosts:
           - host: jellyfin.${DOMAIN_1}
-    
+
     persistence:
       config:
         volsync:
@@ -77,7 +77,7 @@ spec:
         mountPath: /media
         server: ${NAS_IP}
         path: /mnt/tank/media
-    
+
     resources:
       limits:
         cpu: 2000m
