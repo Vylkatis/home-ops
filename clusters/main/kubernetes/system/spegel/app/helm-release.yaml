@@ -24,3 +24,6 @@ spec:
       strategy: rollback
       retries: 3
   values:
+    metrics:
+      main:
+        enabled: false
