@@ -39,6 +39,12 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: domain-0-le-prod
+          homepage:
+            enabled: true
+            group: "Media Manager"
+            widget:
+              custom:
+                key: "${SONARR_KEY}"
         hosts:
           - host: sonarr.${DOMAIN_0}
 
