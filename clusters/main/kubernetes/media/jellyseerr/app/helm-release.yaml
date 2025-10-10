@@ -48,5 +48,8 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: domain-1-le-prod
+          homepage:
+            enabled: true
+            group: "Media Manager"
         hosts:
           - host: jellyseerr.${DOMAIN_1}
