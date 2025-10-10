@@ -51,5 +51,8 @@ spec:
           homepage:
             enabled: true
             group: "Media Manager"
+            widget:
+              custom:
+                key: ${JELLYSEERR_KEY}
         hosts:
           - host: jellyseerr.${DOMAIN_1}
