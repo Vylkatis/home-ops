@@ -56,6 +56,9 @@ spec:
               - path: /
                 pathType: Prefix
 
+    files:
+      max_chunk_size: 524288000
+
     nextcloud:
       general:
         default_phone_region: FR
