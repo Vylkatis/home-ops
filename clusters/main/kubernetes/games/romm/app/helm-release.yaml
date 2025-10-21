@@ -107,3 +107,7 @@ spec:
         server: ${NAS_IP}
         path: /mnt/tank/games/roms
         mountPath: /romm/library
+
+    resources:
+      limits:
+        memory: 2Gi
