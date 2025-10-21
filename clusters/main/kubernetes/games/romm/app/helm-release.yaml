@@ -1,0 +1,105 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: romm
+  namespace: romm
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: romm
+      version: 14.20.2
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+      interval: 15m
+  timeout: 20m
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    global:
+      stopAll: false
+    
+    TZ: ${TIMEZONE}
+
+    credentials:
+      s3:
+        type: s3
+        url: ${S3_URL}
+        bucket: ${S3_BUCKET}
+        accessKey: ${S3_accessKey}
+        secretKey: ${S3_secretKey}
+        encrKey: ${S3_encrKey}
+    
+    image:
+      repository: ghcr.io/rommapp/romm
+      pullPolicy: IfNotPresent
+      tag: 4.3.2@sha256:1895c339b3c7ca62d52f809f5e4c747d78fc8291ea5ee88b3b57df84acf33449
+
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: internal
+        integrations:
+          homepage:
+            enabled: true
+            group: Games
+          nginx:
+            enabled: true
+          certManager:
+            enabled: true
+            certificateIssuer: domain-0-le-prod
+        hosts:
+          - host: romm.${DOMAIN_0}
+
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                IGDB_CLIENT_ID: "${ROMM_CLIENT_ID}"
+                IGDB_CLIENT_SECRET: "${ROMM_CLIENT_SECRET}"
+                HASHEOUS_API_ENABLED: true
+                STEAMGRIDDB_API_KEY: "${STEAMGRIDDB_API_KEY}"
+                RETROACHIEVEMENTS_API_KEY: "${RETROACHIEVEMENTS_API_KEY}"
+
+    persistence:
+      config:
+        volsync:
+          - name: r2
+            type: restic
+            credentials: s3
+            dest:
+              enabled: true
+            src:
+              enabled: true
+      resources:
+        enabled: true
+        type: nfs
+        mountPath: /romm/resources
+        server: ${SCALE_IP}
+        path: /mnt/tank/apps-storage/romms/resources
+      assets:
+        enabled: true
+        type: nfs
+        mountPath: /romm/assets
+        server: ${SCALE_IP}
+        path: /mnt/tank/apps-storage/romms/assets
+      library:
+        enabled: true
+        type: nfs
+        server: ${SCALE_IP}
+        path: /mnt/tank/games/roms
+        mountPath: /romm/library
