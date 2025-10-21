@@ -113,5 +113,5 @@ spec:
         enabled: true
         type: nfs
         server: ${NAS_IP}
-        path: /mnt/tank/games/roms
+        path: /mnt/tank/games/emulator
         mountPath: /romm/library
