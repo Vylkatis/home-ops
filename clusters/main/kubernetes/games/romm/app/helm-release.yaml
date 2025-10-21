@@ -54,6 +54,7 @@ spec:
         annotations:
           nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
           nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+          nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
         integrations:
           homepage:
             enabled: true
@@ -107,7 +108,3 @@ spec:
         server: ${NAS_IP}
         path: /mnt/tank/games/roms
         mountPath: /romm/library
-
-    resources:
-      limits:
-        memory: 2Gi
