@@ -89,17 +89,17 @@ spec:
         enabled: true
         type: nfs
         mountPath: /romm/resources
-        server: ${SCALE_IP}
+        server: ${NAS_IP}
         path: /mnt/tank/apps-storage/romm/resources
       assets:
         enabled: true
         type: nfs
         mountPath: /romm/assets
-        server: ${SCALE_IP}
+        server: ${NAS_IP}
         path: /mnt/tank/apps-storage/romm/assets
       library:
         enabled: true
         type: nfs
-        server: ${SCALE_IP}
+        server: ${NAS_IP}
         path: /mnt/tank/games/roms
         mountPath: /romm/library
