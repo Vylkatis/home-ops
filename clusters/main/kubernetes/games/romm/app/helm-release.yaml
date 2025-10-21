@@ -52,7 +52,7 @@ spec:
         type: ClusterIP
         ports:
           main:
-            port: 8000
+            port: 8080
 
     ingress:
       main:
