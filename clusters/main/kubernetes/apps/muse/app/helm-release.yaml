@@ -61,9 +61,9 @@ spec:
         # WATCHING (Watching XYZ)
         # STREAMING (Streaming XYZ)
         activity:
-          type: "WATCHING"
-          detail: "Not a Rickroll"
-          url: "https://youtu.be/qWNQUvIk954"
+          type: "LISTENING"
+          detail: "the voices"
+        # url: ""
         # If you have Muse running in a lot of guilds (10+)
         # you may want to set to true to registering commands bot-wide
         # rather than for each guild (may take hours for commands to propagate)
