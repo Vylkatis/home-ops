@@ -1,0 +1,92 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: muse
+  namespace: muse
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: muse
+      version: 8.11.1
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+      interval: 15m
+  timeout: 20m
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    global:
+      stopAll: false
+    
+    TZ: ${TIMEZONE}
+
+    credentials:
+      s3:
+        type: s3
+        url: ${S3_URL}
+        bucket: ${S3_BUCKET}
+        accessKey: ${S3_accessKey}
+        secretKey: ${S3_secretKey}
+        encrKey: ${S3_encrKey}
+
+    muse:
+      discord:
+        token: "${TERA_TOKEN}"
+      spotify:
+        client:
+          id: "${SPOTIFY_CLIENT_ID}"
+          secret: "${SPOTIFY_CLIENT_SECRET}"
+      youtube:
+        key: "${YOUTUBE_API_KEY}"
+      bot:
+        # online (Online)
+        # idle (Away)
+        # dnd (Do not Disturb)
+        status: "online"
+        # PLAYING (Playing XYZ)
+        # LISTENING (Listening to XYZ)
+        # WATCHING (Watching XYZ)
+        # STREAMING (Streaming XYZ)
+        activity:
+          type: "WATCHING"
+          detail: "Not a Rickroll"
+          url: "https://youtu.be/qWNQUvIk954"
+        # If you have Muse running in a lot of guilds (10+)
+        # you may want to set to true to registering commands bot-wide
+        # rather than for each guild (may take hours for commands to propagate)
+        register_commands: false
+      cache:
+        # 512MB | 10GB
+        limit: 2GB
+    
+    workload:
+      main:
+        podSpec:
+          containers:
+              env:
+                ENABLE_SPONSORBLOCK: true
+                SPONSORBLOCK_TIMEOUT: 5
+
+    persistence:
+      config:
+        volsync:
+          - name: r2
+            type: restic
+            credentials: s3
+            dest:
+              enabled: true
+            src:
+              enabled: true

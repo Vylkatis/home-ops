@@ -30,7 +30,7 @@ spec:
     keepHistory: false
   values:
     controller:
-      replicaCount: 2
+      replicaCount: 1
       service:
         externalTrafficPolicy: Local
         annotations:
@@ -45,6 +45,8 @@ spec:
         default: true
         controllerValue: k8s.io/internal
       config:
+        custom-http-errors: >-
+          401,403,404,500,501,502,503
         allow-snippet-annotations: true
         annotations-risk-level: Critical
         client-body-buffer-size: 100M
@@ -79,6 +81,14 @@ spec:
         requests:
           cpu: 75m
         limits:
-          memory: 500Mi
+          memory: 2Gi
     defaultBackend:
-      enabled: false
+      enabled: true
+      image:
+        repository: ghcr.io/tarampampam/error-pages
+        tag: '3' # using the latest tag is highly discouraged
+      extraEnvs:
+      - name: TEMPLATE_NAME # Optional: change the default theme
+        value: app-down
+      - name: SHOW_DETAILS # Optional: enables the output of additional information on error pages
+        value: 'true'

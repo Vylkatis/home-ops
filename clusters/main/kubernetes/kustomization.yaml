@@ -10,3 +10,5 @@ resources:
   - media
   - networking
   - system
+  - external-services
+  - observability
