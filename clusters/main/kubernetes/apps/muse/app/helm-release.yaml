@@ -42,6 +42,11 @@ spec:
         secretKey: ${S3_secretKey}
         encrKey: ${S3_encrKey}
 
+    image:
+      repository: ghcr.io/museofficial/muse
+      pullPolicy: IfNotPresent
+      tag: pr-1276
+
     muse:
       discord:
         token: "${TERA_TOKEN}"
