@@ -76,6 +76,7 @@ spec:
       main:
         podSpec:
           containers:
+            main:
               env:
                 ENABLE_SPONSORBLOCK: true
                 SPONSORBLOCK_TIMEOUT: 5
