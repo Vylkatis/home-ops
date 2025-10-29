@@ -31,6 +31,11 @@ spec:
   values:
     TZ: ${TIMEZONE}
 
+    workload:
+      main:
+        podSpec:
+          hostname: notifiarr-client-vyltech
+
     ingress:
       main:
         enabled: true
