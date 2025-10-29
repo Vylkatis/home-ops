@@ -31,6 +31,15 @@ spec:
   values:
     TZ: ${TIMEZONE}
 
+    credentials:
+      s3:
+        type: s3
+        url: ${S3_URL}
+        bucket: ${S3_BUCKET}
+        accessKey: ${S3_accessKey}
+        secretKey: ${S3_secretKey}
+        encrKey: ${S3_secretKey}
+
     workload:
       main:
         podSpec:
