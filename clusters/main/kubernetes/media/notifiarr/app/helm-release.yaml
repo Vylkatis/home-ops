@@ -35,6 +35,9 @@ spec:
       main:
         podSpec:
           hostname: notifiarr-client-vyltech
+          initContainers:
+            init-conf:
+              enabled: false
 
     ingress:
       main:
@@ -49,3 +52,14 @@ spec:
 
     notifiarr:
       apikey: "${NOTIFIARR_KEY}"
+
+    persistence:
+      config:
+        volsync:
+          - name: r2
+            type: restic
+            credentials: s3
+            dest:
+              enabled: true
+            src:
+              enabled: true
