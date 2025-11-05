@@ -61,7 +61,7 @@ spec:
                 pathType: Prefix
 
     files:
-      max_chunk_size: 524288000
+      max_chunk_size: 100000000
 
     nextcloud:
       general:
