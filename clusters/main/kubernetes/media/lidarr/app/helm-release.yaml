@@ -42,9 +42,6 @@ spec:
           homepage:
             enabled: true
             group: "Media Manager"
-            widget:
-              #custom:
-                #key: "${LIDARR_KEY}"
         hosts:
           - host: lidarr.${DOMAIN_0}
 
