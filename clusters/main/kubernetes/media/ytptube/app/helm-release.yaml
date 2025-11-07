@@ -53,6 +53,12 @@ spec:
         hosts:
           - host: ytptube.${DOMAIN_0}
 
+    service:
+      main:
+        ports:
+          main:
+            port: 8081
+
     persistence:
       config:
         enabled: true
