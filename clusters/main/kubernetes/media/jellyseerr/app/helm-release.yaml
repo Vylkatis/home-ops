@@ -43,8 +43,6 @@ spec:
     ingress:
       main:
         enabled: true
-        annotations:
-          nginx.ingress.kubernetes.io/custom-http-errors: "599"
         ingressClassName: external
         integrations:
           certManager:
