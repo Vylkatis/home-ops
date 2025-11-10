@@ -87,6 +87,9 @@ spec:
           - en_US
           - es_ES
           - fr_FR
+      
+      php:
+        memory_limit: 2G
 
     persistence:
       config:
