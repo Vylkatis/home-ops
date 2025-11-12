@@ -11,3 +11,6 @@ creation_rules:
   - path_regex: talsecret.yaml
     age: age1dpafzlyh6kar7u02x56k2g83tmg2g3t8aglwzupku8z639gqx5hsvts92d
 ## DO NOT REMOVE: Personal setting go under this line
+  - path_regex: kubernetes/.*\.sops\.ya?ml
+    age: age1dpafzlyh6kar7u02x56k2g83tmg2g3t8aglwzupku8z639gqx5hsvts92d
+    encrypted_regex: "^(data|stringData)$"
