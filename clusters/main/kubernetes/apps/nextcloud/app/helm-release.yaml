@@ -37,7 +37,7 @@ spec:
       s3:
         type: s3
         url: ${S3_URL}
-        bucket: "${S3_BUCKET}-{{ .Release.Name }}"
+        bucket: "${S3_BUCKET}-nextcloud"
         accessKey: ${S3_accessKey}
         secretKey: ${S3_secretKey}
         encrKey: ${S3_encrKey}
