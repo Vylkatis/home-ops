@@ -115,3 +115,7 @@ spec:
         server: ${NAS_IP}
         path: /mnt/tank/games/emulator
         mountPath: /romm/library
+
+    resources:
+      requests:
+        cpu: 25m

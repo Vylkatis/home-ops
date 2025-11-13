@@ -55,3 +55,7 @@ spec:
             mountPath: /config/backup
             server: ${NAS_IP}
             path: /mnt/tank/backups/applications/bazarr
+
+    resources:
+      requests:
+        cpu: 25m

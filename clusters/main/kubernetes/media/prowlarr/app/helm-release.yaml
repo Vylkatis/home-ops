@@ -59,3 +59,7 @@ spec:
             mountPath: /config/Backups
             server: ${NAS_IP}
             path: /mnt/tank/backups/applications/prowlarr
+
+    resources:
+      requests:
+        cpu: 25m

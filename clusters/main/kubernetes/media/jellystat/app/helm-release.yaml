@@ -49,3 +49,7 @@ spec:
             mountPath: /app/backend/backup-data
             server: ${NAS_IP}
             path: /mnt/tank/backups/applications/jellystat
+
+    resources:
+      requests:
+        cpu: 25m

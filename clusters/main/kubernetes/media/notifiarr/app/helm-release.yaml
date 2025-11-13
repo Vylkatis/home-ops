@@ -77,3 +77,7 @@ spec:
               enabled: true
               trigger:
                 schedule: "0 2 * * *"
+
+    resources:
+      requests:
+        cpu: 25m

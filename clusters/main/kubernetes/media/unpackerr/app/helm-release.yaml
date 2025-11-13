@@ -58,3 +58,7 @@ spec:
                   value: http://sonarr-anime.sonarr-anime.svc.cluster.local:8989
                 - name: UN_SONARR_1_API_KEY
                   value: ${SONARR_ANIME_KEY}
+
+    resources:
+      requests:
+        cpu: 25m
