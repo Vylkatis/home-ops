@@ -4,3 +4,4 @@ resources:
   - ingress.yaml
   - receiver.yaml
   - secret.sops.yaml
+  - webhook.secret.yaml
