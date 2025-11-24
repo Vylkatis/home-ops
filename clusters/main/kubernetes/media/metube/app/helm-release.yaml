@@ -57,12 +57,12 @@ spec:
           - host: metube.${DOMAIN_0}
 
     persistence:
-        downloads:
-            enabled: true
-            type: nfs
-            mountPath: /downloads
-            server: ${NAS_IP}
-            path: /mnt/tank/media/downloads/metube/
+      downloads:
+        enabled: true
+        type: nfs
+        mountPath: /downloads
+        server: ${NAS_IP}
+        path: /mnt/tank/media/downloads/metube/
 
     resources:
       requests:
