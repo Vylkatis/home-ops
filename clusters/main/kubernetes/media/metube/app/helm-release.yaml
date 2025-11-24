@@ -57,7 +57,7 @@ spec:
           - host: metube.${DOMAIN_0}
 
     persistence:
-        media:
+        downloads:
             enabled: true
             type: nfs
             mountPath: /downloads
