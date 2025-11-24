@@ -60,7 +60,7 @@ spec:
         media:
             enabled: true
             type: nfs
-            mountPath: /download
+            mountPath: /downloads
             server: ${NAS_IP}
             path: /mnt/tank/media/downloads/metube/
 
