@@ -84,4 +84,8 @@ spec:
     resources:
       limits:
         cpu: 6000m
-        memory: 12Gi  
+        memory: 12Gi
+
+    securityContext:
+      container:
+        readOnlyRootFilesystem: false
