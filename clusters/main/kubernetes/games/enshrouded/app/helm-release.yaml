@@ -55,9 +55,7 @@ spec:
         podSpec:
           containers:
             main:
-              env: 
-                PUID: 0
-                PGID: 0
+              env:
                 SERVER_NAME: Lunarch
                 SERVER_ROLE_0_NAME: Admins
                 SERVER_ROLE_0_PASSWORD: secret1
