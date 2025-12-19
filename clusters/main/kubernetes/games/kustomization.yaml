@@ -3,4 +3,3 @@ kind: Kustomization
 resources:
   - palworld/ks.yaml
   - romm/ks.yaml
-  - enshrouded/ks.yaml
