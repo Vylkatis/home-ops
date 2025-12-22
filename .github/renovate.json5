@@ -3,6 +3,6 @@
   "extends": [
     "config:recommended",
     "github>trueforge-org/truecharts//.github/renovate/main.json5",
-    "github>vylkatis/cluster//.github/renovate/special_talos.json5"
+    "github>Vylkatis/cluster//.github/renovate/special_talos.json5"
   ]
 }
