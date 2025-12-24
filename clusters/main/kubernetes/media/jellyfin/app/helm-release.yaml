@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: jellyfin
-      version: 22.2.10
+      version: 22.2.11
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -70,7 +70,18 @@ spec:
             src:
               enabled: true
               trigger:
-                schedule: "0 2 * * *"
+                schedule: 30 0 * * *
+      data:
+        volsync:
+          - name: r2
+            type: restic
+            credentials: s3
+            dest:
+              enabled: false
+            src:
+              enabled: true
+              trigger:
+                schedule: 30 0 * * *
       media:
         enabled: true
         type: nfs
