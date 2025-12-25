@@ -109,3 +109,7 @@ spec:
                   enabled: false
                 startup:
                   enabled: false
+              command:
+              - /bin/sh
+              - -c
+              - "tail -f /dev/null"
