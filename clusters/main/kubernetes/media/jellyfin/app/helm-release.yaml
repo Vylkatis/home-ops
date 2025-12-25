@@ -96,12 +96,3 @@ spec:
         cpu: 2000m
         memory: 3Gi
         gpu.intel.com/i915: 1
-
-    workload:
-      main:
-        podSpec:
-          containers:
-            main:
-              env:
-                JELLYFIN_DATA_DIR: /config
-                JELLYFIN_CONFIG_DIR: /config/config
