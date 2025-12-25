@@ -96,20 +96,3 @@ spec:
         cpu: 2000m
         memory: 3Gi
         gpu.intel.com/i915: 1
-
-    workload:
-      main:
-        podSpec:
-          containers:
-            main:
-              probes:
-                readiness:
-                  enabled: false
-                liveness:
-                  enabled: false
-                startup:
-                  enabled: false
-              command:
-              - /bin/sh
-              - -c
-              - "tail -f /dev/null"
