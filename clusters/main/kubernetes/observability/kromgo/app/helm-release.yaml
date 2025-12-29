@@ -1,0 +1,65 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2.json
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: kromgo
+  namespace: kromgo
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: kromgo
+      version: 1.0.2
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+      interval: 15m
+  timeout: 20m
+  maxHistory: 3
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    TZ: ${TIMEZONE}
+
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: external
+        integrations:
+          homepage:
+            enabled: true
+            group: Monitoring
+          certManager:
+            enabled: true
+            certificateIssuer: domain-1-le-prod
+        hosts:
+          - host: "{{ .Release.Name }}.${DOMAIN_1}"
+
+    kromgo:
+      badge:
+        font: Verdana.ttf  # Relative to /kromgo - Verdana.ttf is available in the container
+        size: 12
+      metrics:
+        - name: talos_version
+          query: node_os_info{ name="Talos"}
+          label: version_id
+          title: Talos Version
+
+        - name: kubernetes_version
+          query: kubernetes_build_info{ service="kubernetes"}
+          label: git_version
+          title: Kubernetes Version
+
+    resources:
+      requests:
+        cpu: 25m
