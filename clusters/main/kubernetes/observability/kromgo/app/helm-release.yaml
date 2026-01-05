@@ -65,6 +65,11 @@ spec:
           label: revision
           title: Flux
 
+        - name: homelab_power
+          query: round(hass_sensor_power_w{domain="sensor",entity="sensor.0x8c65a3fffe10bcad_power"}, 0.1)
+          suffix: "w"
+          title: Power
+
     resources:
       requests:
         cpu: 25m
