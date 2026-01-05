@@ -1,0 +1,22 @@
+---
+# yaml-language-server: $schema=https://kubernetes-schemas.pages.dev/monitoring.coreos.com/scrapeconfig_v1alpha1.json
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: ScrapeConfig
+metadata:
+  name: home-assistant
+  namespace: kube-prometheus-stack  
+spec:
+  staticConfigs:
+    - targets:
+        - ${HAOS_IP}:8123
+  metricsPath: /api/prometheus
+  scheme: http
+  authorization:
+    type: Bearer
+    credentials:
+      name: home-assistant-token
+      key: token
+  relabelings:
+    - action: replace
+      targetLabel: job
+      replacement: home-assistant
