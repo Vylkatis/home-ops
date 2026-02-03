@@ -32,7 +32,7 @@ spec:
     TZ: ${TIMEZONE}
 
     global:
-      stopAll: false
+      stopAll: true
 
     workload:
       main:
@@ -48,8 +48,9 @@ spec:
                 # HYTALE_JAVA_ARGS:
     service:
       main:
-        type: LoadBalancer
+        externalTrafficPolicy: Local
         loadBalancerIP: 192.168.1.61
+        type: LoadBalancer
         ports:
           main:
             port: 5520
