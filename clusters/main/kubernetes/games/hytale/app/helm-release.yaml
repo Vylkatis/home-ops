@@ -55,9 +55,9 @@ spec:
             port: 5520
             protocol: udp
     persistence:
-      #backup:
-        #enabled: true
-        #mountPath: /app/backup
+      app:
+        enabled: true
+        mountPath: /app
 
     addons:
       codeserver:
