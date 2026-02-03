@@ -30,6 +30,17 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    service:
+      main:
+        type: LoadBalancer
+        loadBalancerIP: ${DASHBOARD_IP}
+        externalTrafficPolicy: Local
+        integrations:
+          metallb:
+            enabled: true
+        ports:
+          main:
+            port: 80
     ingress:
       main:
         enabled: true
