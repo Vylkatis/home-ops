@@ -61,7 +61,7 @@ spec:
 
     addons:
       codeserver:
-        enabled: true
+        enabled: false
         ingress:
           enabled: true
           ingressClassName: internal
