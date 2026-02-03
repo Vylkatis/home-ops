@@ -40,7 +40,7 @@ spec:
           containers:
             main:
               env:
-                HYTALE_AUTO_UPDATE: true
+                HYTALE_AUTO_UPDATE: false
                 HYTALE_ALLOW_OP: true
                 HYTALE_BACKUP_ENALBED: false
                 HYTALE_BACKUP_FREQ: 30
