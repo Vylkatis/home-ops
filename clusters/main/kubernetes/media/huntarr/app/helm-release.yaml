@@ -43,7 +43,7 @@ spec:
     image:
       repository: huntarr/huntarr
       pullPolicy: IfNotPresent
-      tag: 9.3.5@sha256:827a7a9737eb2881d252c7a05f13a06500846be232959be212da687cb2ce2059
+      tag: 9.3.6@sha256:364c91535efe085ce30397a8a7b5085feec70e9da7dccf1252427885d80392b4
 
     securityContext:
       container:
