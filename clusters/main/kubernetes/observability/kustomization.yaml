@@ -4,3 +4,4 @@ resources:
   #- grafana/ks.yaml
   - myspeed/ks.yaml
   - kromgo/ks.yaml
+  - gatus/ks.yaml
