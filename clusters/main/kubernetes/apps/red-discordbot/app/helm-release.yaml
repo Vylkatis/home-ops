@@ -9,8 +9,8 @@ spec:
   interval: 15m
   chart:
     spec:
-      chart: red-discordbot
-      version: 8.17.0
+      chart: app-template
+      version: 15.38.0
       sourceRef:
         kind: HelmRepository
         name: truecharts
@@ -30,6 +30,30 @@ spec:
     keepHistory: false
   values:
     TZ: ${TIMEZONE}
+
+    credentials:
+      s3:
+        type: s3
+        url: ${S3_URL}
+        bucket: "${S3_BUCKET}-{{ .Release.Name }}"
+        accessKey: ${S3_accessKey}
+        secretKey: ${S3_secretKey}
+        encrKey: ${S3_secretKey}
+
+    image:
+      pullPolicy: IfNotPresent
+      repository: docker.io/phasecorex/red-discordbot
+      tag: full@sha256:85a08e15ec50d2d44f5c34e3f37733ad7f3b035f1a1b555183cae19fcb60f319
+    persistence:
+      data:
+        enabled: true
+        mountPath: /data
+
+    securityContext:
+      container:
+        readOnlyRootFilesystem: false
+        runAsGroup: 0
+        runAsUser: 0
 
     workload:
       main:
