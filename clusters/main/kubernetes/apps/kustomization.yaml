@@ -5,4 +5,4 @@ resources:
   - kubernetes-dashboard/ks.yaml
   - nextcloud/ks.yaml
   - teamspeak/ks.yaml
-  - muse/ks.yaml
+  - red-discordbot/ks.yaml
