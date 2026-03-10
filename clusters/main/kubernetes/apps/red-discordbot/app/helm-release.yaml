@@ -31,26 +31,6 @@ spec:
   values:
     TZ: ${TIMEZONE}
 
-    Dashboardimage:
-      pullPolicy: Always
-      repository: docker.io/jzjad/red-dashboard
-      tag: latest
-
-    service:
-      main:
-        enabled: true
-        type: LoadBalancer
-        externalTrafficPolicy: Local
-        integrations:
-          metallb:
-            enabled: true
-        ports:
-          main:
-            enabled: true
-            port: 42356
-            protocol: http
-            targetPort: 42356
-
     workload:
       main:
         podSpec:
@@ -59,18 +39,6 @@ spec:
               env:
                 PREFIX: "?"
                 TOKEN: "${TERA_TOKEN}"
-                EXTRA_ARGS: "--rpc"
-              probes:
-                liveness:
-                  enabled: false
-                readiness:
-                  enabled: false
-                startup:
-                  enabled: false
-            dashboard:
-              enabled: true
-              primary: false
-              imageSelector: Dashboardimage
               probes:
                 liveness:
                   enabled: false
