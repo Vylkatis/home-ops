@@ -48,7 +48,7 @@ spec:
           main:
             enabled: true
             port: 42356
-            protocol: HTTP
+            protocol: http
             targetPort: 42356
 
     workload:
