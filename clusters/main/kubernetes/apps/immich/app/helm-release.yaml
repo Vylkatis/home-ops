@@ -1,0 +1,87 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: immich
+  namespace: immich
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: immich
+      version: 25.31.4
+      sourceRef:
+        kind: HelmRepository
+        name: truecharts
+        namespace: flux-system
+      interval: 15m
+  timeout: 20m
+  maxHistory: 3
+  driftDetection:
+    mode: warn
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    global:
+      stopAll: false
+
+    TZ: ${TIMEZONE}
+
+    credentials:
+      s3:
+        type: s3
+        url: ${S3_URL}
+        bucket: "${S3_BUCKET}-{{ .Release.Name }}"
+        accessKey: ${S3_accessKey}
+        secretKey: ${S3_secretKey}
+        encrKey: ${S3_secretKey}
+
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: external
+        integrations:
+          certManager:
+            enabled: true
+            certificateIssuer: domain-1-le-prod
+        hosts:
+          - host: immich.${DOMAIN_1}
+
+    persistence:
+      library:
+        type: nfs
+        server: ${NAS_IP}
+        path: /mnt/tank/apps-storage/immich/library
+      uploads:
+        type: nfs
+        server: ${NAS_IP}
+        path: /mnt/tank/apps-storage/immich/uploads
+      backups:
+        type: nfs
+        server: ${NAS_IP}
+        path: /mnt/tank/apps-storage/immich/backups
+      thumbs:
+        type: nfs
+        server: ${NAS_IP}
+        path: /mnt/tank/apps-storage/immich/thumbs
+      profile:
+        type: nfs
+        server: ${NAS_IP}
+        path: /mnt/tank/apps-storage/immich/profile
+      video:
+        type: nfs
+        server: ${NAS_IP}
+        path: /mnt/tank/apps-storage/immich/encoded-video
+
+    cnpg:
+      main:
+        cluster:
+          singleNode: true
