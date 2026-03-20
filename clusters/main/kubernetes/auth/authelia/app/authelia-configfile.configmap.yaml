@@ -8,22 +8,22 @@ data:
     session:
       inactivity: 30m
       cookies:
-        - domain: ${DOMAIN}
-          authelia_url: https://auth.${DOMAIN}
+        - domain: ${DOMAIN_1}
+          authelia_url: https://auth.${DOMAIN_1}
     authentication_backend:
       # lldap setup
       # https://github.com/lldap/lldap/blob/main/example_configs/authelia_config.yml
       ldap:
         implementation: lldap
         address: ldap://lldap-ldap.lldap.svc.cluster.local:3890
-        base_dn: dc=${DN},dc=${DC}
-        user: uid=manager,ou=people,dc=${DN},dc=${DC}
+        base_dn: ${LDAP_BASE_DN}
+        user: uid=manager,ou=people,${LDAP_BASE_DN}
         password: ${AUTHELIA_PASSWORD}
     notifier:
       smtp:
         address: submissions://${SMTP_HOST}:465
         username: ${SMTP_USER}
         password: ${SMTP_PASSWORD}
-        sender: Authelia Admin <no-reply@${DOMAIN}>
+        sender: Authelia Admin <no-reply@${DOMAIN_1}>
         tls:
           server_name: ${SMTP_HOST}
