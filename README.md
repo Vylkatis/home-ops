@@ -72,7 +72,7 @@ All secrets and credentials are stored in this repository **encrypted with SOPS*
 
 | Service        | Usage                                                     |
 | -------------- | --------------------------------------------------------- |
-| **Cloudflare** | DNS management, tunnels, and S3-compatible object storage |
+| **Cloudflare** | DNS management, registrar, and S3-compatible object storage |
 | **GitHub**     | Source control, CI, and GitOps reconciliation source      |
 
 
