@@ -1,7 +1,4 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - palworld/ks.yaml
-  - romm/ks.yaml
-  - hytale/ks.yaml
-  - minecraft
+  - helm-release.yaml
