@@ -70,3 +70,11 @@ spec:
                   sound-physics-remastered
                   simple-voice-chat
                   bluemap
+
+    service:
+      main:
+        type: LoadBalancer
+        externalTrafficPolicy: Local
+        integrations:
+          metallb:
+            enabled: true
