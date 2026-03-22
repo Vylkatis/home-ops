@@ -25,14 +25,14 @@ spec:
       retries: 3
   values:
     global:
-      stopAll: false
+      stopAll: true
     
     resources:
       limits:
         cpu: 8000m
         memory: 20Gi
       requests:
-        cpu: 4000m
+        cpu: 3000m
         memory: 10Gi
     
     workload:
@@ -67,14 +67,5 @@ spec:
                 USE_SIMD_FLAGS: false
                 VIEW_DISTANCE: 10
                 CURSEFORGE_FILES: |
-                  sound-physics-remastered
                   simple-voice-chat
                   bluemap
-
-    service:
-      main:
-        type: LoadBalancer
-        externalTrafficPolicy: Local
-        integrations:
-          metallb:
-            enabled: true
