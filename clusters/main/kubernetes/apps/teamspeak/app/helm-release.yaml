@@ -29,7 +29,7 @@ spec:
     keepHistory: false
   values:
     global:
-      stopAll: true
+      stopAll: false
 
     TZ: ${TIMEZONE}
 
@@ -46,3 +46,6 @@ spec:
       main:
         type: LoadBalancer
         loadBalancerIP: 192.168.1.55
+        integrations:
+          metallb:
+            enabled: true
