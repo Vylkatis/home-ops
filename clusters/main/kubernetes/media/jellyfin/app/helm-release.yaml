@@ -40,6 +40,11 @@ spec:
         secretKey: ${S3_secretKey}
         encrKey: ${S3_secretKey}
 
+    image:
+      repository: oci.trueforge.org/containerforge/jellyfin
+      pullPolicy: IfNotPresent
+      tag: 10.11.8@sha256:a6f1666597046709da7f40fde82afa611f87220f5ef9ce927a301fcd45da1519
+
     ingress:
       main:
         enabled: true
