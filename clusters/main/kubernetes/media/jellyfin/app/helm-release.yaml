@@ -43,7 +43,7 @@ spec:
     image:
       repository: oci.trueforge.org/containerforge/jellyfin
       pullPolicy: IfNotPresent
-      tag: 10.11.8@sha256:e112906769315a4efa14d94917418f1455a2d93092f8e15a37a8faff98da4fc6
+      tag: 10.11.8@sha256:1b3a0340a213aadfefc105400f0bfb8224857f46f3032d363299066d8dbee375
 
     ingress:
       main:
