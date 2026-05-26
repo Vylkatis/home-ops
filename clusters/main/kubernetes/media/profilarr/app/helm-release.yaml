@@ -41,13 +41,6 @@ spec:
               env:
                 AUTH: off
                 ORIGIN: https://profilarr.${DOMAIN_0}
-              probes:
-                liveness:
-                  enabled: false
-                readiness:
-                  enabled: false
-                startup:
-                  enabled: false
 
     image:
       repository: ghcr.io/dictionarry-hub/profilarr
