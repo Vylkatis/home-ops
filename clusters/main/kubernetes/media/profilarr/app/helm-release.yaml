@@ -31,10 +31,7 @@ spec:
     global:
       stopAll: false
 
-    image:
-      repository: ghcr.io/dictionarry-hub/profilarr
-      pullPolicy: IfNotPresent
-      tag: v2.0.5
+    image: ghcr.io/dictionarry-hub/profilarr:latest
     
     ingress:
       main:
