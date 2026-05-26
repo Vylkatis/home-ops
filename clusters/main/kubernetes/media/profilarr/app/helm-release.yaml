@@ -30,6 +30,11 @@ spec:
   values:
     global:
       stopAll: false
+
+    image:
+      repository: ghcr.io/dictionarry-hub/profilarr
+      pullPolicy: IfNotPresent
+      tag: v2.0.5
     
     ingress:
       main:
@@ -43,6 +48,15 @@ spec:
           certManager:
             enabled: true
             certificateIssuer: domain-0-le-prod
+
+    workload:
+      main:
+        podSpec:
+          containers:
+            main:
+              env:
+                ORIGIN: https://profilarr.${DOMAIN_0}
+                AUTH: off
 
     cnpg:
       main:
