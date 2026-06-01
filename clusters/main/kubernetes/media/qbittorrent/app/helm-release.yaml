@@ -51,6 +51,15 @@ spec:
         hosts:
           - host: qbittorrent.${DOMAIN_0}
 
+    service:
+      torrent:
+        enabled: true
+        ports:
+          torrent:
+            enabled: true
+            port: ${VPN_PORTS}
+            protocol: tcp
+
     persistence:
       vuetorrent:
         enabled: true
