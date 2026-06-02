@@ -109,5 +109,5 @@ spec:
             protocol: tcp
           torrentudp:
             enabled: true
-            port: "{{ .Values.service.torrent.ports.torrent.port }}"
+            port: ${VPN_PORTS}
             protocol: udp
