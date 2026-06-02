@@ -51,15 +51,6 @@ spec:
         hosts:
           - host: qbittorrent.${DOMAIN_0}
 
-    service:
-      torrent:
-        enabled: true
-        ports:
-          torrent:
-            enabled: true
-            port: ${VPN_PORTS}
-            protocol: tcp
-
     persistence:
       vuetorrent:
         enabled: true
@@ -109,3 +100,10 @@ spec:
             protocol: "http"
             targetPort: 8888
         type: "ClusterIP"
+      torrent:
+        enabled: true
+        ports:
+          torrent:
+            enabled: true
+            port: ${VPN_PORTS}
+            protocol: tcp
