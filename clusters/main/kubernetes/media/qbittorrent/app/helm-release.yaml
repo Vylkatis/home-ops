@@ -100,14 +100,3 @@ spec:
             protocol: "http"
             targetPort: 8888
         type: "ClusterIP"
-      torrent:
-        enabled: true
-        ports:
-          torrent:
-            enabled: true
-            port: ${VPN_PORTS}
-            protocol: tcp
-          torrentudp:
-            enabled: true
-            port: ${VPN_PORTS}
-            protocol: udp
