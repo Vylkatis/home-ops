@@ -6,7 +6,6 @@ resources:
   - jellyfin/ks.yaml
   - jellyseerr/ks.yaml
   - jellystat/ks.yaml
-  - lidarr/ks.yaml
   - notifiarr/ks.yaml
   - prowlarr/ks.yaml
   - qbittorrent/ks.yaml
