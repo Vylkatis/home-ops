@@ -57,7 +57,7 @@ spec:
         type: nfs
         mountPath: /config/vuetorrent
         server: ${NAS_IP}
-        path: /mnt/bulk/apps-stroage/VueTorrent
+        path: /mnt/bulk/apps-storage/VueTorrent
       media:
         enabled: true
         type: nfs
