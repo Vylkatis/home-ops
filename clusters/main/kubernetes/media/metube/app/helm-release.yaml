@@ -65,7 +65,7 @@ spec:
         type: nfs
         mountPath: /downloads
         server: ${NAS_IP}
-        path: /mnt/tank/media/downloads/metube/
+        path: /mnt/bulk/media/downloads/metube/
 
     resources:
       requests:

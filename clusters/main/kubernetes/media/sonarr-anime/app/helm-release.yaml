@@ -57,7 +57,7 @@ spec:
             type: nfs
             mountPath: /media
             server: ${NAS_IP}
-            path: /mnt/tank/media
+            path: /mnt/bulk/media
         backup:
             enabled: true
             type: nfs
