@@ -102,13 +102,13 @@ spec:
         type: nfs
         mountPath: /romm/resources
         server: ${NAS_IP}
-        path: /mnt/tank/apps-storage/romm/resources
+        path: /mnt/bulk/apps-stroage/romm/resources
       assets:
         enabled: true
         type: nfs
         mountPath: /romm/assets
         server: ${NAS_IP}
-        path: /mnt/tank/apps-storage/romm/assets
+        path: /mnt/bulk/apps-stroage/romm/assets
       library:
         enabled: true
         type: nfs

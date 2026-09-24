@@ -59,27 +59,27 @@ spec:
       library:
         type: nfs
         server: ${NAS_IP}
-        path: /mnt/tank/apps-storage/immich/library
+        path: /mnt/bulk/apps-stroage/immich/library
       uploads:
         type: nfs
         server: ${NAS_IP}
-        path: /mnt/tank/apps-storage/immich/uploads
+        path: /mnt/bulk/apps-stroage/immich/uploads
       backups:
         type: nfs
         server: ${NAS_IP}
-        path: /mnt/tank/apps-storage/immich/backups
+        path: /mnt/bulk/apps-stroage/immich/backups
       thumbs:
         type: nfs
         server: ${NAS_IP}
-        path: /mnt/tank/apps-storage/immich/thumbs
+        path: /mnt/bulk/apps-stroage/immich/thumbs
       profile:
         type: nfs
         server: ${NAS_IP}
-        path: /mnt/tank/apps-storage/immich/profile
+        path: /mnt/bulk/apps-stroage/immich/profile
       video:
         type: nfs
         server: ${NAS_IP}
-        path: /mnt/tank/apps-storage/immich/encoded-video
+        path: /mnt/bulk/apps-stroage/immich/encoded-video
 
     cnpg:
       main:
