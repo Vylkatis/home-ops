@@ -54,7 +54,7 @@ spec:
             type: nfs
             mountPath: /config/backup
             server: ${NAS_IP}
-            path: /mnt/tank/backups/applications/bazarr
+            path: /mnt/bulk/backups/applications/bazarr
 
     resources:
       requests:
