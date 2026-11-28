@@ -15,16 +15,16 @@ spec:
         name: truecharts
         namespace: flux-system
       interval: 15m
-  timeout: 20m
+  timeout: 5m
   maxHistory: 3
   install:
     createNamespace: true
     remediation:
       retries: 3
   upgrade:
-    cleanupOnFail: true
     remediation:
-      retries: 3
+      retries: 0
+      remediateLastFailure: false
   uninstall:
     keepHistory: false
   values:
