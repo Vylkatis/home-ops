@@ -15,16 +15,16 @@ spec:
         name: truecharts
         namespace: flux-system
       interval: 15m
-  timeout: 5m
+  timeout: 15m
   maxHistory: 3
   install:
     createNamespace: true
     remediation:
       retries: 3
   upgrade:
+    cleanupOnFail: true
     remediation:
-      retries: 0
-      remediateLastFailure: false
+      retries: 3
   uninstall:
     keepHistory: false
   values:
@@ -60,9 +60,6 @@ spec:
               - path: /
                 pathType: Prefix
 
-    files:
-      max_chunk_size: 100000000
-
     nextcloud:
       general:
         default_phone_region: FR
@@ -87,6 +84,8 @@ spec:
           - en_US
           - es_ES
           - fr_FR
+      files:
+        max_chunk_size: 100000000
       
       php:
         memory_limit: 2G
